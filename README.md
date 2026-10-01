@@ -10,7 +10,7 @@ Projeto da disciplina **Sistemas Distribuídos (CCMP0054) – UNIVASF**, em Pyth
 
 ## Como rodar na máquina virtual da disciplina (`sd`)
 
-O ambiente oficial é a VM criada pelo pacote `sd.zip` do professor
+O ambiente oficial é a VM criada pelo pacote `sd.zip`
 (VirtualBox + Vagrant, Ubuntu 20.04, **Python 3.8 e Django 3.2**).
 O projeto é compatível com esse ambiente.
 
@@ -35,7 +35,7 @@ sd\                         ← pasta onde está o Vagrantfile
 ```
 
 Dentro da VM essa pasta aparece como `/vagrant/web-folder/pws`. É esse caminho
-que o script do professor usa ao entrar na VM.
+que o script ao entrar na VM.
 
 ### 2. Liberar o acesso pelo `localhost` (uma vez só)
 
@@ -68,7 +68,7 @@ vagrant ssh
 ```
 
 > ⚠️ **O terminal vai parecer travado.** É o comportamento esperado. Ao entrar,
-> o script do professor ativa o ambiente virtual, entra em
+> o script ativa o ambiente virtual, entra em
 > `/vagrant/web-folder/pws` e inicia o Django com o depurador `debugpy` em modo
 > de espera (`--wait-for-client`). O servidor fica parado até o VS Code se
 > conectar na porta 8001.
