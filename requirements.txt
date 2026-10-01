@@ -1,0 +1,3 @@
+# Compatível com a VM da disciplina (Python 3.8 + Django 3.2) e com Python 3.10+ / Django 5.x
+Django>=3.2,<6.0
+Faker>=24.0

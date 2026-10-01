@@ -1,0 +1,44 @@
+ValeFruta - Entrega 2 (Sistemas Distribuídos - CCMP0054)
+=========================================================
+
+ACESSO AO DJANGO ADMIN
+----------------------
+URL:     http://localhost:8000/admin/
+Usuário: admin
+Senha:   admin123
+
+O banco (db.sqlite3) já vem com as migrations aplicadas e todas as tabelas populadas.
+
+COMO RODAR NO PRÓPRIO COMPUTADOR (Python 3.8 ou superior)
+------------------------------------
+1. Abra um terminal na pasta do projeto (onde está o manage.py).
+2. (Opcional, recomendado) crie e ative um ambiente virtual:
+       python -m venv .venv
+       .venv\Scripts\activate          (Windows)
+       source .venv/bin/activate       (Linux/macOS)
+3. Instale as dependências:
+       pip install -r requirements.txt
+4. Inicie o servidor:
+       python manage.py runserver
+5. Acesse http://localhost:8000/admin/ e entre com as credenciais acima.
+
+RODANDO NA MÁQUINA VIRTUAL DA DISCIPLINA (Vagrant: Ubuntu 20.04, Python 3.8, Django 3.2)
+------------------------------------------------------------------------------------
+O projeto é compatível com o ambiente da VM. Coloque o conteúdo desta pasta em
+sd\web-folder\pws (na VM: /vagrant/web-folder/pws) e, dentro da VM (vagrant ssh):
+       (aperte Ctrl+C se o terminal ficar parado esperando o depurador)
+       pip install -r requirements.txt
+       python manage.py runserver 0:8000
+Acesse no navegador do Windows: http://localhost:8000/admin/
+(requer no Vagrantfile: config.vm.network "forwarded_port", guest: 8000, host: 8000)
+Passo a passo completo no README.md.
+
+RECRIAR OS DADOS FICTÍCIOS (opcional)
+-------------------------------------
+       python manage.py popular_banco --limpar
+
+O comando usa Faker (pt_BR) com semente fixa: sempre gera os mesmos dados.
+Ele também recria o superusuário admin / admin123.
+
+Observação: os 550 usuários fictícios (produtores e compradores) usam a senha
+"senha123", mas não têm acesso ao admin (não são staff).
