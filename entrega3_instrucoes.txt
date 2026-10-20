@@ -3,10 +3,10 @@ ValeFruta - Entrega 3 (Sistemas Distribuídos - CCMP0054)
 
 LINK DO SISTEMA
 ---------------
-https://<PREENCHER>.pythonanywhere.com/
+https://valefruta.pythonanywhere.com/
 
 Funcionalidade completa: cadastro de lote pelo produtor
-URL: https://<PREENCHER>.pythonanywhere.com/lotes/novo/
+URL: https://valefruta.pythonanywhere.com/lotes/novo/
 (view: produtores/views.py -> novo_lote, form: produtores/forms.py -> LoteForm,
 template: produtores/templates/produtores/novo_lote.html)
 
