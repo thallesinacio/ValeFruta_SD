@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}Novo lote | ValeFruta{% endblock %}
+
+{% block conteudo %}
+<h2>Cadastrar novo lote</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_p }}
+    <button type="submit" class="botao">Salvar lote</button>
+    <a href="{% url 'lista_lotes' %}">Cancelar</a>
+</form>
+{% endblock %}

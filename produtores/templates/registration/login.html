@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block titulo %}Entrar | ValeFruta{% endblock %}
+
+{% block conteudo %}
+<h2>Entrar</h2>
+{% if form.errors %}
+    <div class="msg error">Usuário ou senha incorretos.</div>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}">
+    <button type="submit" class="botao">Entrar</button>
+</form>
+{% endblock %}

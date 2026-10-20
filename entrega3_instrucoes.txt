@@ -1,0 +1,63 @@
+ValeFruta - Entrega 3 (Sistemas Distribuídos - CCMP0054)
+=========================================================
+
+LINK DO SISTEMA
+---------------
+https://<PREENCHER>.pythonanywhere.com/
+
+Funcionalidade completa: cadastro de lote pelo produtor
+URL: https://<PREENCHER>.pythonanywhere.com/lotes/novo/
+(view: produtores/views.py -> novo_lote, form: produtores/forms.py -> LoteForm,
+template: produtores/templates/produtores/novo_lote.html)
+
+
+USUÁRIO DE TESTE (produtor)
+---------------------------
+Usuário: produtor_teste
+Senha:   valefruta2026
+
+O usuário já tem a propriedade "Sítio Teste (Petrolina-PE)", que cultiva
+Manga Tommy Atkins e Uva Arra 15.
+
+
+TESTE DE VALIDAÇÃO BEM SUCEDIDA
+-------------------------------
+1. Acesse o link /lotes/novo/ e entre com o usuário de teste.
+2. Preencha:
+   - Propriedade: Sítio Teste (Petrolina-PE)
+   - Cultura: Manga Tommy Atkins
+   - Quantidade colhida (kg): 500
+   - Quantidade disponível (kg): 400
+   - Preço por kg (R$): 3,50
+   - Data de colheita: a data de hoje ou uma data passada
+   - Validade: 15 (padrão)
+3. Clique em "Salvar lote".
+
+Resultado esperado: a página "Meus lotes" é aberta com a mensagem verde
+"Lote VFxx-xxxxx cadastrado com sucesso!" e o lote aparece na tabela.
+
+
+TESTE DE VALIDAÇÃO MAL SUCEDIDA
+-------------------------------
+1. Acesse /lotes/novo/ logado com o usuário de teste.
+2. Preencha:
+   - Propriedade: Sítio Teste (Petrolina-PE)
+   - Cultura: Melancia Crimson Sweet (não é cultivada nessa propriedade)
+   - Quantidade colhida (kg): 500
+   - Quantidade disponível (kg): 800 (maior que a colhida)
+   - Preço por kg (R$): 3,50
+   - Data de colheita: uma data no futuro
+3. Clique em "Salvar lote".
+
+Resultado esperado: o lote NÃO é salvo, aparece a mensagem vermelha
+"Não foi possível cadastrar o lote. Corrija os erros abaixo." e os erros
+de cada campo:
+   - "Esta cultura não está cadastrada na propriedade selecionada."
+   - "A quantidade disponível não pode ser maior que a colhida."
+   - "A data de colheita não pode estar no futuro."
+
+Outros casos que também são rejeitados: campos obrigatórios em branco,
+quantidade colhida menor que 10 kg e preço por kg fora da faixa de R$ 0,10 a R$ 100,00.
+
+As mensagens de sucesso e de erro usam o framework de mensagens do Django
+(django.contrib.messages).

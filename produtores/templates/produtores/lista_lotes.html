@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block titulo %}Meus lotes | ValeFruta{% endblock %}
+
+{% block conteudo %}
+<h2>Lotes de {{ produtor.nome }}</h2>
+<p><a href="{% url 'novo_lote' %}" class="botao">+ Novo lote</a></p>
+<table>
+    <tr>
+        <th>Código</th>
+        <th>Cultura</th>
+        <th>Propriedade</th>
+        <th>Disponível (kg)</th>
+        <th>Preço/kg</th>
+        <th>Colheita</th>
+        <th>Status</th>
+    </tr>
+    {% for lote in lotes %}
+    <tr>
+        <td>{{ lote.codigo }}</td>
+        <td>{{ lote.cultura }}</td>
+        <td>{{ lote.propriedade.nome }}</td>
+        <td>{{ lote.quantidade_disponivel_kg }}</td>
+        <td>R$ {{ lote.preco_kg }}</td>
+        <td>{{ lote.data_colheita|date:"d/m/Y" }}</td>
+        <td>{{ lote.get_status_display }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="7">Nenhum lote cadastrado.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

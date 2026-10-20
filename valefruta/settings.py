@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-df2$a!hg#pwg3=@*u1uotbv9_6zg9kaq^%+9e)5oe=ndk_0&*1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.56.100"]  # .100 = VM da disciplina (Vagrant)
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "192.168.56.100", ".pythonanywhere.com"]  # .100 = VM da disciplina (Vagrant)
 
 
 # Application definition
@@ -119,6 +119,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Login
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "lista_lotes"
+LOGOUT_REDIRECT_URL = "login"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

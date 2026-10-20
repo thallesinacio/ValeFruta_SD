@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}ValeFruta{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f3; color: #222; }
+        header { background: #2e7d32; color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header a, header button { color: #fff; margin-left: 12px; text-decoration: none; background: none; border: none; font: inherit; cursor: pointer; }
+        main { max-width: 900px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 6px; }
+        .msg { padding: 10px; margin-bottom: 15px; border-radius: 4px; }
+        .msg.success { background: #e3f4e4; border: 1px solid #81c784; }
+        .msg.error { background: #fdecea; border: 1px solid #e57373; }
+        .msg.info, .msg.warning { background: #fff8e1; border: 1px solid #ffd54f; }
+        form p { margin: 10px 0; }
+        label { display: block; font-weight: bold; margin-bottom: 3px; }
+        input, select, textarea { padding: 6px; width: 100%; max-width: 400px; box-sizing: border-box; }
+        .errorlist { color: #c62828; margin: 3px 0; padding-left: 18px; }
+        .helptext { color: #666; font-size: 0.85em; }
+        .botao { background: #2e7d32; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border-bottom: 1px solid #ddd; padding: 6px; text-align: left; }
+    </style>
+</head>
+<body>
+<header>
+    <strong>ValeFruta</strong>
+    <nav>
+        {% if user.is_authenticated %}
+            <span>{{ user.username }}</span>
+            <a href="{% url 'lista_lotes' %}">Meus lotes</a>
+            <a href="{% url 'novo_lote' %}">Novo lote</a>
+            <form method="post" action="{% url 'logout' %}" style="display:inline">
+                {% csrf_token %}
+                <button type="submit">Sair</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+    </nav>
+</header>
+<main>
+    {% for message in messages %}
+        <div class="msg {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+    {% block conteudo %}{% endblock %}
+</main>
+</body>
+</html>
